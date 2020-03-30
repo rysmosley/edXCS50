@@ -3,14 +3,28 @@
 #include <cs50.h>
 #include <stdio.h>
 
+int get_proper_int(void);
 void printRow(int n);
 
 int main(void)
 {
  // Ask user how many rows
- int rows = get_int("How many rows?: ");
+ int rows = get_proper_int();
  printRow(rows);
 }
+
+// Make sure number of rows is within range
+int get_proper_int(void)
+{
+    int n;
+    do
+    {
+        n = get_int("How many rows?: ");
+    }
+    while (n < 1 || n > 8);
+    return n;
+}
+
 
 // Print number of rows requested by user
 void printRow(int n)
